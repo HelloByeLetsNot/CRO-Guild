@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossfire Kingdom</title>
+    <style>
+        :root {
+            --primary-dark: #1a1a2e;
+            --secondary-dark: #16213e;
+            --accent-gold: #e94560;
+            --text-light: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body, html {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .fullscreen-section {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-dark);
+            overflow-y: auto;
+            z-index: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .fullscreen-section.active {
+            display: flex;
+        }
+
+        #homeSection {
+            display: flex;
+        }
+
+        /* Home Section */
+        .home-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .home-title {
+            font-size: 4rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .home-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .category-btn {
+            padding: 15px 30px;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .category-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Category Sections */
+        .category-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .category-title {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: var(--secondary-dark);
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-card-title {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        /* Bottom Navigation */
+        #bottomNav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--secondary-dark);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            z-index: 2;
+        }
+
+        .nav-btn {
+            color: var(--text-light);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            color: var(--accent-gold);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .home-title {
+                font-size: 2.5rem;
+            }
+
+            .category-title {
+                font-size: 2rem;
+            }
+
+            .category-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Section -->
+    <section id="homeSection" class="fullscreen-section active">
+        <div class="home-content">
+            <h1 class="home-title">Crossfire Kingdom</h1>
+            <p class="home-subtitle">Forged in Battle, United in Conquest</p>
+            <div class="category-buttons">
+                <a href="#" class="category-btn" onclick="showSection('aboutSection')">About</a>
+                <a href="#" class="category-btn" onclick="showSection('eventsSection')">Events</a>
+                <a href="#" class="category-btn" onclick="showSection('recruitmentSection')">Recruitment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="aboutSection" class="fullscreen-section">
+        <div class="category-content">
+            <h2 class="category-title">About Our Kingdom</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <h3 class="category-card-title">Strategic Mastery</h3>
+                    <p>We excel in tactical gameplay and coordinated team strategies. Our guild is built on precision, communication, and collective intelligence.</p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-card-title">Competitive Spirit</h3>
+                    <p>Pushing boundaries and achieving victory in every challenge. We are relentless in our pursuit of excellence and growth.</p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-card-title">Community First</h3>
+                    <p>A tight-knit guild where every member is valued, supported, and given opportunities to develop their skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="eventsSection" class="fullscreen-section">
+        <div class="category-content">
+            <h2 class="category-title">Upcoming Events</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <h3 class="category-card-title">Strategic Planning</h3>
+                    <p>Weekly war room sessions every Friday at 8 PM EST. Discuss tactics, review performance, and plan future conquests.</p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-card-title">Recruit Training</h3>
+                    <p>Intensive bootcamp for new members every Sunday at 2 PM EST. Learn advanced strategies and team coordination.</p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-card-title">Territory Expansion</h3>
+                    <p>Monthly guild war campaigns to claim new territories and demonstrate our strategic superiority.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment Section -->
+    <section id="recruitmentSection" class="fullscreen-section">
+        <div class="category-content">
+            <h2 class="category-title">Join The Kingdom</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <h3 class="category-card-title">Requirements</h3>
+                    <p>Active participation, excellent team communication, strategic mindset, and commitment to guild growth.</p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-card-title">Application Process</h3>
+                    <p>Complete our comprehensive application, showcase your skills, and demonstrate your potential as a kingdom member.</p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-card-title">Leveling Opportunities</h3>
+                    <p>Pathways to leadership, skill, tricks, and tips of the trade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottomNav">
+        <button class="nav-btn" onclick="showSection('homeSection')">Home</button>
+        <button class="nav-btn" onclick="showSection('aboutSection')">About</button>
+        <button class="nav-btn" onclick="showSection('eventsSection')">Events</button>
+        <button class="nav-btn" onclick="showSection('recruitmentSection')">Recruitment</button>
+    </nav>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.fullscreen-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update active state in bottom navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Find corresponding nav button and add active class
+            const activeNavBtn = document.querySelector(`.nav-btn[onclick="showSection('${sectionId}')"]`);
+            if (activeNavBtn) {
+                activeNavBtn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
